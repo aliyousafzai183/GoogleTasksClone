@@ -1,15 +1,20 @@
 
-import React from 'react';
+import * as React from 'react';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
+// screens
+import NoTasksScreen from './src/views/NoTasksYetScreen';
+import NoStarredTasksScreen from './src/views/NoStarredTaskScreen';
+
 function App() {
   return (
     <View style={styles.mainContainer}>
-      <Text>ALLAH IS GREAT ! I LOVE ALLAH PAK</Text>
+      {/* <NoTasksScreen /> */}
+      <NoStarredTasksScreen />
     </View>
   );
 }
