@@ -5,7 +5,7 @@ import { useState } from 'react';
 // vector icons
 import {FontAwesome, Feather} from 'react-native-vector-icons';
 
-const Todos = () => {
+const Todos = ({ title, description }) => {
     const [starred, setStarred] = useState(false);
     const [completed, setCompleted] = useState(false);
 
@@ -14,7 +14,7 @@ const Todos = () => {
 
             <View>
                 {starred? <FontAwesome name='circle' size={24} color='white' /> : <Feather name='circle' size={24} color='white' />}
-                <Text>This is Task</Text>
+                <Text>{title}</Text>
             </View>
 
             <TouchableOpacity>
@@ -28,5 +28,12 @@ const Todos = () => {
 export default Todos;
 
 const styles = StyleSheet.create({
-
+    main:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        paddingVertical:20,
+        borderBottomWidth:1,
+        borderColor:'#2D2D2D'
+    }
 })

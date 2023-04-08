@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, TouchableOpacity, Text, Modal } from 'react-native';
 
 // vector icons
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -7,8 +7,20 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const BottomBar = () => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handlePress = () => {
+        setShowModal(true);
+    };
+
+    const handleSave = () => {
+        // Handle saving the new task here
+        setShowModal(false);
+    };
     return (
+
         <View style={styles.main}>
+
             <View style={styles.subContainer1}>
                 <TouchableOpacity
                     style={styles.leftButton}
@@ -27,9 +39,10 @@ const BottomBar = () => {
                 </TouchableOpacity>
             </View>
             <TouchableOpacity
-                    style={styles.AddButton}
-                >
-                    <Entypo name="plus" size={30} color="#C5C7C6" />
+                style={styles.AddButton}
+                onPress={handlePress}
+            >
+                <Entypo name="plus" size={30} color="#C5C7C6" />
             </TouchableOpacity>
         </View>
     )
@@ -51,13 +64,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
 
-    leftButton:{
-        marginRight:'15%'
+    leftButton: {
+        marginRight: '15%'
     },
 
-    AddButton:{
-        backgroundColor:'#004A77',
-        padding:15,
-        borderRadius:15
+    AddButton: {
+        backgroundColor: '#004A77',
+        padding: 15,
+        borderRadius: 15
     }
 })
