@@ -11,18 +11,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // screen
 import MainView from './src/views/screens/MainView';
 import ViewTask from './src/views/screens/ViewTask';
-
-const HomeScreen = () => {
-  return (
-    <MainView />
-  )
-}
-
-const TaskScreen = () => {
-  return (
-    <ViewTask />
-  )
-}
+import AddList from './src/views/screens/AddList';
 
 const Stack = createNativeStackNavigator();
 function App() {
@@ -30,13 +19,14 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home Screen"
-          component={HomeScreen}
+          name="HomeScreen"
+          component={MainView}
           options={{
             headerShown:false
           }}
         />
-        <Stack.Screen name="View Task" component={TaskScreen}/>
+        <Stack.Screen name="ViewTask" component={ViewTask}/>
+        <Stack.Screen name="AddList" component={AddList}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
