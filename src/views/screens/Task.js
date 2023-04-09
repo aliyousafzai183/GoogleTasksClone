@@ -6,11 +6,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 // components
 import StarredTasks from './StarredTasks';
 import MyTask from './MyTask';
-// import AddList from './AddList';
 import AddListButton from '../components/AddListButton';
-
-// icons
-// import { FontAwesome, MaterialIcons } from 'react-native-vector-icons';
 
 const Tab = createMaterialTopTabNavigator();
 

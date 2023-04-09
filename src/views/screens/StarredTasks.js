@@ -1,35 +1,59 @@
 import * as React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 
 // components
-import NoStarredTasks from '../components/NoStarredTasks';
+import NoTasks from '../components/NoTasks';
+import Todos from '../components/Todos';
 
-const StarredTask = () => {
-   
-    const [displayNoStarredTask, setDisplayNoStarredTask] = useState(true);
-    
-    if(displayNoStarredTask){
+// data
+import data from '../../model/data';
+import getStarredData from '../../controller/starred';
+
+// Icons
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+
+const MyTask = () => {
+    const [tasks, setTasks] = useState(getStarredData);
+    console.log(tasks);
+
+    if (!tasks || tasks.length === 0) {
         return (
             <View style={styles.main}>
-                <NoStarredTasks />
+                <NoTasks />
             </View>
         )
     }
-
+    
     return (
-        <View style={styles.main}>
-            <Text>This is My Tasks page</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Recently Starred</Text>
+            <FlatList
+                data={tasks}
+                renderItem={({ item }) => <Todos
+                    title={item.title}
+                    description={item.description}
+                    starred={item.starred}
+                    completed={item.completed}
+                    date={item.date}
+                />}
+            />
         </View>
     )
 }
 
-export default StarredTask;
+export default MyTask;
 
 const styles = StyleSheet.create({
-    main:{
-        backgroundColor:'#1F1F1F',
-        paddingHorizontal:20,
-        flex:1
+    container:{
+        flex:1,
+        backgroundColor: '#1F1F1F',
+        paddingHorizontal: 20,
+        paddingVertical: 10
+    },
+
+    title: {
+        color: '#C5C7C6',
+        fontSize: 18,
     }
 })

@@ -18,9 +18,9 @@ export default Todos = ({ title, description, starred, completed, date }) => {
                     onPress={() => setComplete(!complete)}
                     style={styles.completedButton}>
                     {complete ? (
-                        <FontAwesome name='circle' size={24} color='white' />
+                        <FontAwesome name='circle' size={24} color='#C5C7C6' />
                     ) : (
-                        <Feather name='circle' size={24} color='white' />
+                        <Feather name='circle' size={24} color='#C5C7C6' />
                     )}
                 </TouchableOpacity>
 
@@ -36,9 +36,9 @@ export default Todos = ({ title, description, starred, completed, date }) => {
 
                 <TouchableOpacity onPress={() => setStar(!star)}>
                     {star ? (
-                        <FontAwesome name='star' size={24} color='white' />
+                        <FontAwesome name='star' size={24} color='#C5C7C6' />
                     ) : (
-                        <FontAwesome name='star-o' size={24} color='white' />
+                        <FontAwesome name='star-o' size={24} color='#C5C7C6' />
                     )}
                 </TouchableOpacity>
             </View>
