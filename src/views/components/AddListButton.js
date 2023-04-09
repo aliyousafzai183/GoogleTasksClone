@@ -6,13 +6,16 @@ import AntDesign from 'react-native-vector-icons/AntDesign/'
 
 const AddListButton = ({ navigation }) => {
     return (
-        <TouchableOpacity
-            style={styles.main}
-            onPress={() => navigation.navigate('AddList')}
-        >
-            <AntDesign name="pluscircleo" size={50} color="#C7C5C6" />
-            <Text style={styles.txt}>Add new list</Text>
-        </TouchableOpacity>
+        <View
+            style={styles.main}>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('AddList')}
+                style={styles.button}
+            >
+                <AntDesign name="pluscircleo" size={50} color="#C7C5C6" />
+                <Text style={styles.txt}>Add new list</Text>
+            </TouchableOpacity>
+        </View>
     )
 }
 
@@ -33,5 +36,9 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textAlign: 'center',
         marginTop: '10%'
+    },
+
+    button:{
+        alignItems:'center'
     }
 })

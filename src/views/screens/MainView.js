@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 
 // components
 import BottomBar from '../components/BottomBar';
@@ -8,11 +8,11 @@ import Task from './Task';
 
 const MainView = () => {
     return (
-        <View style={styles.main}>
+        <KeyboardAvoidingView style={styles.main}>
             <NavBar />
             <Task />
             <BottomBar />
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 
