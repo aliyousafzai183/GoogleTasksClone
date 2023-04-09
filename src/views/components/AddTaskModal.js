@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 
 // vector icons
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default Todos = () => {
@@ -20,6 +19,10 @@ export default Todos = () => {
     useEffect(() => {
         textInputRef.current?.focus();
     }, []);
+
+    const handleSave = () => {
+
+    }
 
     return (
         <View style={styles.container}>
@@ -72,7 +75,7 @@ export default Todos = () => {
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity  onPress={handleSave}>
                     <Text style={styles.saveButton}>Save</Text>
                 </TouchableOpacity>
 

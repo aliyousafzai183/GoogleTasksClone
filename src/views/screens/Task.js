@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet} from 'react-native';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
@@ -36,7 +36,7 @@ const Task = () => {
             <Tab.Screen
                 name="+ New list"
                 component={AddListButton}
-                listeners={({ navigation, route }) => ({
+                listeners={({ navigation }) => ({
                     tabPress: (e) => {
                         e.preventDefault();
                         navigation.navigate('AddList');

@@ -6,16 +6,29 @@ import { useState } from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
-export default Todos = ({ title, description, starred, completed, date }) => {
+// updateTask
+import updateTask from '../../controller/updateData';
+
+export default Todos = ({ id, title, description, starred, completed, date }) => {
     const [star, setStar] = useState(starred);
     const [complete, setComplete] = useState(completed);
+
+    const handleComplete = () => {
+        // setComplete(!complete);
+        updateTask(title, { completed: !complete });
+    };
+    
+    const handleStar = () => {
+        // setStar(!star);
+        updateTask(title, { starred: !star });
+    };
 
     return (
         <TouchableOpacity
             style={styles.container}>
             <View style={styles.main}>
                 <TouchableOpacity
-                    onPress={() => setComplete(!complete)}
+                    onPress={handleComplete}
                     style={styles.completedButton}>
                     {complete ? (
                         <FontAwesome name='circle' size={24} color='#C5C7C6' />
@@ -34,7 +47,7 @@ export default Todos = ({ title, description, starred, completed, date }) => {
                     }
                 </View>
 
-                <TouchableOpacity onPress={() => setStar(!star)}>
+                <TouchableOpacity onPress={handleStar}>
                     {star ? (
                         <FontAwesome name='star' size={24} color='#C5C7C6' />
                     ) : (

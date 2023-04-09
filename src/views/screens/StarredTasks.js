@@ -1,26 +1,37 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // components
-import NoTasks from '../components/NoTasks';
 import Todos from '../components/Todos';
+import NoStarredTasks from '../components/NoStarredTasks';
 
 // data
-import data from '../../model/data';
-import getStarredData from '../../controller/starred';
+import data from '../../controller/data';
 
 // Icons
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const MyTask = () => {
-    const [tasks, setTasks] = useState(getStarredData);
-    console.log(tasks);
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+          const tasksData = await data();
+      
+          // Filter the tasksData array to only include items that are starred and not completed
+          const filteredTasks = tasksData.filter((task) => task.starred && !task.completed);
+      
+          setTasks(filteredTasks);
+        }
+      
+        fetchData();
+      }, []);
 
     if (!tasks || tasks.length === 0) {
         return (
-            <View style={styles.main}>
-                <NoTasks />
+            <View style={styles.container}>
+                <NoStarredTasks />
             </View>
         )
     }
@@ -35,7 +46,7 @@ const MyTask = () => {
                     description={item.description}
                     starred={item.starred}
                     completed={item.completed}
-                    date={item.date}
+                    date={item.date.toDate().toString().slice(0,10)}
                 />}
             />
         </View>
