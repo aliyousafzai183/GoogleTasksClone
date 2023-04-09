@@ -6,15 +6,15 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 // components
 import StarredTasks from './StarredTasks';
 import MyTask from './MyTask';
-import AddList from './AddList';
+// import AddList from './AddList';
 import AddListButton from '../components/AddListButton';
 
 // icons
-import { FontAwesome, MaterialIcons } from 'react-native-vector-icons';
+// import { FontAwesome, MaterialIcons } from 'react-native-vector-icons';
 
 const Tab = createMaterialTopTabNavigator();
 
-const Task = ({ navigation }) => {
+const Task = () => {
 
     return (
         <Tab.Navigator
@@ -32,7 +32,10 @@ const Task = ({ navigation }) => {
                 name="Starred"
                 component={StarredTasks}
             />
-            <Tab.Screen name="My Tasks" component={MyTask} />
+            <Tab.Screen
+                name="My Tasks"
+                component={MyTask}
+            />
 
             <Tab.Screen
                 name="+ New list"
@@ -53,8 +56,7 @@ export default Task;
 
 const styles = StyleSheet.create({
     main: {
-        // backgroundColor:'yellow',
         paddingHorizontal: 20,
-        height: '71%'
+        height: '71%',
     }
 })

@@ -1,8 +1,4 @@
 import * as React from 'react';
-import {
-  View,
-  StyleSheet
-} from 'react-native';
 
 // Navigations
 import { NavigationContainer } from '@react-navigation/native';
@@ -33,11 +29,3 @@ function App() {
 }
 
 export default App;
-
-
-const styles = StyleSheet.create({
-  app:{
-      flex:1,
-      backgroundColor:'#333'
-  }
-})

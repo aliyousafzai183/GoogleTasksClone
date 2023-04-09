@@ -21,7 +21,6 @@ export default MainView;
 const styles = StyleSheet.create({
     main: {
         flexDirection: 'column',
-        backgroundColor: 'grey',
-        flex: 1
+        flex: 1,
     }
 })

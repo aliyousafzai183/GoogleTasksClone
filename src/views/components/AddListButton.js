@@ -1,20 +1,37 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button} from 'react-native';
+import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 
-const AddListButton = ({navigation}) => {
+// icons
+import AntDesign from 'react-native-vector-icons/AntDesign/'
+
+const AddListButton = ({ navigation }) => {
     return (
-        <View style={styles.main}>
-            <Button title='Create New List' onPress={()=>navigation.navigate('AddList')}/>
-        </View>
+        <TouchableOpacity
+            style={styles.main}
+            onPress={() => navigation.navigate('AddList')}
+        >
+            <AntDesign name="pluscircleo" size={50} color="#C7C5C6" />
+            <Text style={styles.txt}>Add new list</Text>
+        </TouchableOpacity>
     )
 }
 
 export default AddListButton;
 
 const styles = StyleSheet.create({
-    main:{
-        flex:1,
-        backgroundColor:'#1F1F1F',
-        paddingHorizontal:20,
+    main: {
+        backgroundColor: '#1F1F1F',
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 150
+    },
+
+    txt: {
+        color: "#C7C5C6",
+        fontSize: 14,
+        textAlign: 'center',
+        marginTop: '10%'
     }
 })
