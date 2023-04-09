@@ -91,11 +91,10 @@ const styles = StyleSheet.create({
     modalContent: {
         backgroundColor: '#2D2E32',
         padding: 20,
-        alignItems: 'center',
         justifyContent: 'center',
         borderTopLeftRadius:40,
         borderTopRightRadius:40,
         width:'100%',
-        height:'18%'
+        height:'25%'
     },
 })
