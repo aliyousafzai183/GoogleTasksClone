@@ -13,27 +13,26 @@ import data from '../../controller/data';
 // Icons
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-// toCheckfocus
-import { useIsFocused } from '@react-navigation/native';
+// redux
+import { connect } from 'react-redux';
 
 // To display All Tasks
-const MyTask = ({ navigation }) => {
+const MyTask = ({ navigation, fetchData }) => {
     const [tasks, setTasks] = useState([]);
     // to show completed tasks or not , user choice
     const [showCompleted, setShowCompleted] = useState(false);
     const [incompletedTasks, setIncompletedTasks] = useState([]);
     const [completedTasks, setCompletedTasks] = useState([]);
 
-    // when that screen is focused
-    const isFocused = useIsFocused();
-
     useEffect(() => {
-        async function fetchData() {
-            const tasksData = await data();
-            setTasks(tasksData);
-        }
+        const fetchData = async () => {
+          const tasksData = await data();
+          setTasks(tasksData);
+        };
+      
         fetchData();
-    }, [isFocused]);
+      }, [fetchData]);
+      
 
     useEffect(() => {
         setIncompletedTasks(tasks.filter(task => !task.completed));
@@ -111,7 +110,11 @@ const MyTask = ({ navigation }) => {
     )
 }
 
-export default MyTask;
+const mapStateToProps = state => ({
+    fetchData: state.fetchData
+})
+
+export default connect(mapStateToProps)(MyTask);
 
 const styles = StyleSheet.create({
     container: {

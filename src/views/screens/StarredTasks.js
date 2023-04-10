@@ -9,7 +9,10 @@ import NoStarredTasks from '../components/NoStarredTasks';
 // data
 import data from '../../controller/data';
 
-const MyTask = ({navigation}) => {
+// redux
+import { connect } from 'react-redux';
+
+const StarredTasks = ({navigation, fetchData}) => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
@@ -23,7 +26,7 @@ const MyTask = ({navigation}) => {
         }
       
         fetchData();
-      }, []);
+      }, [fetchData]);
 
     //   when there are no starred tasks
     if (!tasks || tasks.length === 0) {
@@ -53,7 +56,11 @@ const MyTask = ({navigation}) => {
     )
 }
 
-export default MyTask;
+const mapStateToProps = state => ({
+    fetchData: state.fetchData
+})
+
+export default connect(mapStateToProps)(StarredTasks);
 
 const styles = StyleSheet.create({
     container:{

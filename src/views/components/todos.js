@@ -8,9 +8,10 @@ import Feather from 'react-native-vector-icons/Feather';
 
 // updateTask in db
 import updateTask from '../../controller/updateData';
+import { connect } from 'react-redux';
 
 // that component will be rendered to display every todo
-export default Todos = ({ id,  title, description, starred, completed, date, navigation }) => {
+const Todos = ({ id,  title, description, starred, completed, date, navigation, toggleFetchData }) => {
     const [star, setStar] = useState(starred);
     const [complete, setComplete] = useState(completed);
 
@@ -18,17 +19,20 @@ export default Todos = ({ id,  title, description, starred, completed, date, nav
     const handleComplete = () => {
         setComplete(!complete);
         updateTask(id, { completed: !complete });
+        toggleFetchData();
     };
     
     // when any task is toggled starred
     const handleStar = () => {
         setStar(!star);
         updateTask(id, { starred: !star });
+        toggleFetchData();
     };
 
     // when any task is clicked to view details of task
     handleViewTask = () => {
         navigation.navigate('ViewTask');
+        toggleFetchData();
     }
 
     return (
@@ -72,6 +76,14 @@ export default Todos = ({ id,  title, description, starred, completed, date, nav
         </TouchableOpacity>
     );
 };
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleFetchData: () => dispatch({ type: 'TOGGLE_FETCH' })
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Todos);
 
 const styles = StyleSheet.create({
     container: {

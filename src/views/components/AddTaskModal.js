@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 // addData
 import AddTask from '../../controller/addData';
 
-const Todos = ({ toggleModalVisible }) => {
+const Todos = ({ toggleModalVisible, toggleFetchData }) => {
     const [showDescription, setShowDescription] = useState(false);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [title, setTitle] = useState('');
@@ -32,6 +32,7 @@ const Todos = ({ toggleModalVisible }) => {
         }
 
         await AddTask(title, description, starred);
+        toggleFetchData();
         toggleModalVisible();
     }
 
@@ -98,7 +99,9 @@ const Todos = ({ toggleModalVisible }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleModalVisible: () => dispatch({ type: 'TOGGLE_MODAL' })
+        toggleModalVisible: () => dispatch({ type: 'TOGGLE_MODAL' }),
+        toggleFetchData: () => dispatch({ type: 'TOGGLE_FETCH' }),
+
     }
 }
 
