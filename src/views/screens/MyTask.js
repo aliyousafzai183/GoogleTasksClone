@@ -63,7 +63,7 @@ const MyTask = ({navigation}) => {
                         description={item.description}
                         starred={item.starred}
                         completed={item.completed}
-                        date={item.date.toDate().toString().slice(0, 10)}
+                        date={item.date?.toDate().toString().slice(0, 10)}
                         navigation={navigation}
                     />}
                 />
@@ -91,7 +91,7 @@ const MyTask = ({navigation}) => {
                             description={item.description}
                             starred={item.starred}
                             completed={item.completed}
-                            date={item.date.toDate().toString().slice(0, 10)}
+                            date={item.date?.toDate().toString().slice(0, 10)}
                             navigation={navigation}
                         />}
                     />

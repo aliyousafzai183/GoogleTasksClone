@@ -9,6 +9,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 // connect
 import { connect } from 'react-redux';
 
+// addData
+import AddTask from '../../controller/addData';
+
 const Todos = ({ toggleModalVisible }) => {
     const [showDescription, setShowDescription] = useState(false);
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -22,10 +25,12 @@ const Todos = ({ toggleModalVisible }) => {
         textInputRef.current?.focus();
     }, []);
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (title.length < 3) {
             return;
         }
+
+        await AddTask(title, description, starred);
         toggleModalVisible();
     }
 
