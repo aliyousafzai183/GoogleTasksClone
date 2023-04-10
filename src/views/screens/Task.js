@@ -6,7 +6,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 // components
 import StarredTasks from './StarredTasks';
 import MyTask from './MyTask';
-import AddListButton from '../components/AddListButton';
+import AddList from './AddList';
+
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -35,7 +36,7 @@ const Task = () => {
 
             <Tab.Screen
                 name="+ New list"
-                component={AddListButton}
+                component={AddList}
                 listeners={({ navigation }) => ({
                     tabPress: (e) => {
                         e.preventDefault();

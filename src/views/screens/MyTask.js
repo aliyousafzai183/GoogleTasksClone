@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 // components
 import NoTasks from '../components/NoTasks';
 import Todos from '../components/Todos';
+import Completed from '../components/AllTasksComplete';
 
 // data
 import data from '../../controller/data';
@@ -15,7 +16,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 // toCheckfocus
 import { useIsFocused } from '@react-navigation/native';
 
-const MyTask = () => {
+const MyTask = ({navigation}) => {
     const [tasks, setTasks] = useState([]);
     const [showCompleted, setShowCompleted] = useState(false);
     const [incompletedTasks, setIncompletedTasks] = useState([]);
@@ -34,13 +35,19 @@ const MyTask = () => {
     useEffect(() => {
         setIncompletedTasks(tasks.filter(task => !task.completed));
         setCompletedTasks(tasks.filter(task => task.completed));
-        tasks.filter(task => console.log(task.ref))
     }, [tasks]);
 
     if (!tasks || tasks.length === 0) {
         return (
             <View style={styles.container}>
                 <NoTasks />
+            </View>
+        )
+    }else if (!incompletedTasks || incompletedTasks.length === 0) {
+
+        return (
+            <View>
+                <Completed />
             </View>
         )
     }
@@ -57,6 +64,7 @@ const MyTask = () => {
                         starred={item.starred}
                         completed={item.completed}
                         date={item.date.toDate().toString().slice(0, 10)}
+                        navigation={navigation}
                     />}
                 />
 
@@ -84,6 +92,7 @@ const MyTask = () => {
                             starred={item.starred}
                             completed={item.completed}
                             date={item.date.toDate().toString().slice(0, 10)}
+                            navigation={navigation}
                         />}
                     />
                 }

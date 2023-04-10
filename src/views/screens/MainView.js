@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         flex: 1,
     }
-})
+});

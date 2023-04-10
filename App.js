@@ -10,11 +10,11 @@ import ViewTask from './src/views/screens/ViewTask';
 import AddList from './src/views/screens/AddList';
 
 // redux
-// redux
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
 
 const Stack = createNativeStackNavigator();
+
 function App() {
   return (
     <Provider store={store}>
@@ -27,8 +27,34 @@ function App() {
               headerShown: false
             }}
           />
-          <Stack.Screen name="ViewTask" component={ViewTask} />
-          <Stack.Screen name="AddList" component={AddList} />
+          <Stack.Screen
+            name="ViewTask"
+            component={ViewTask}
+            options={{
+              title: 'Task Details',
+              headerStyle: {
+                backgroundColor: '#1F1F1F'
+              },
+              headerTitleStyle: {
+                color: '#C7C5C6'
+              },
+              headerTintColor: '#C7C5C6'
+            }}
+          />
+          <Stack.Screen
+            name="AddList"
+            component={AddList}
+            options={{
+              title: 'Add List',
+              headerStyle: {
+                backgroundColor: '#1F1F1F'
+              },
+              headerTitleStyle: {
+                color: '#C7C5C6'
+              },
+              headerTintColor: '#C7C5C6'
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

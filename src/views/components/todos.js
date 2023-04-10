@@ -9,23 +9,29 @@ import Feather from 'react-native-vector-icons/Feather';
 // updateTask
 import updateTask from '../../controller/updateData';
 
-export default Todos = ({ id, title, description, starred, completed, date }) => {
+export default Todos = ({ title, description, starred, completed, date, navigation }) => {
     const [star, setStar] = useState(starred);
     const [complete, setComplete] = useState(completed);
 
     const handleComplete = () => {
-        // setComplete(!complete);
+        setComplete(!complete);
         updateTask(title, { completed: !complete });
     };
     
     const handleStar = () => {
-        // setStar(!star);
+        setStar(!star);
         updateTask(title, { starred: !star });
     };
 
+    handleViewTask = () => {
+        navigation.navigate('ViewTask');
+    }
+
     return (
         <TouchableOpacity
-            style={styles.container}>
+            style={styles.container}
+            onPress={handleViewTask}   
+        >
             <View style={styles.main}>
                 <TouchableOpacity
                     onPress={handleComplete}

@@ -6,12 +6,14 @@ import { useState, useEffect, useRef } from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default Todos = () => {
-    const [showSaveButton, setShowSaveButton] = useState(false);
+// connect
+import { connect } from 'react-redux';
+
+const Todos = ({ toggleModalVisible }) => {
     const [showDescription, setShowDescription] = useState(false);
     const [showDatePicker, setShowDatePicker] = useState(false);
-    const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     const [starred, setStarred] = useState(false);
 
     const textInputRef = useRef(null);
@@ -21,7 +23,10 @@ export default Todos = () => {
     }, []);
 
     const handleSave = () => {
-
+        if (title.length < 3) {
+            return;
+        }
+        toggleModalVisible();
     }
 
     return (
@@ -75,21 +80,29 @@ export default Todos = () => {
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity  onPress={handleSave}>
+                <TouchableOpacity onPress={handleSave} style={styles.saveButtonContainer}>
                     <Text style={styles.saveButton}>Save</Text>
                 </TouchableOpacity>
 
             </View>
-
         </View>
     );
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleModalVisible: () => dispatch({ type: 'TOGGLE_MODAL' })
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Todos);
+
+
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
-        justifyContent:'space-evenly',
-        height:'100%'
+        justifyContent: 'space-evenly',
+        height: '100%'
     },
 
     title: {
@@ -97,9 +110,9 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
 
-    description:{
-        color:'#C7C5C6',
-        fontSize:15
+    description: {
+        color: '#C7C5C6',
+        fontSize: 15
     },
 
     subContainer: {
@@ -118,5 +131,9 @@ const styles = StyleSheet.create({
 
     otherButtons: {
         marginRight: '10%'
+    },
+
+    saveButtonContainer: {
+        padding: 10
     }
 });

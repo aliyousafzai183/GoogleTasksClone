@@ -9,15 +9,20 @@ import Entypo from 'react-native-vector-icons/Entypo';
 // components
 import AddTaskModal from './AddTaskModal';
 
-const BottomBar = () => {
-    const [modalVisible, setModalVisible] = useState(false);
+// connect
+import { connect } from 'react-redux';
+
+const BottomBar = ({modalVisible, toggleModalVisible}) => {
+    // const [modalVisible, setModalVisible] = useState(false);
 
     const handlePress = () => {
-        setModalVisible(true);
+        // setModalVisible(true);
+        toggleModalVisible();
     };
 
     const handleClose = () => {
-        setModalVisible(false);
+        // setModalVisible(false);
+        toggleModalVisible();
     }
 
     if (!modalVisible) {
@@ -42,7 +47,7 @@ const BottomBar = () => {
     } else {
         return (
             <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={handleClose}>
-                <TouchableOpacity style={[styles.modalBackground, { justifyContent: 'flex-end' }]} onPress={() => setModalVisible(false)}>
+                <TouchableOpacity style={[styles.modalBackground, { justifyContent: 'flex-end' }]} onPress={handleClose}>
                     <View style={styles.modalContent}>
                         <AddTaskModal />
                     </View>
@@ -52,7 +57,15 @@ const BottomBar = () => {
     }
 }
 
-export default BottomBar;
+const mapStateToProps = state => ({
+    modalVisible: state.modalVisible
+})
+
+const mapDispatchToProps = dispatch => ({
+    toggleModalVisible: () => dispatch({ type: 'TOGGLE_MODAL' })
+})
+
+export default connect (mapStateToProps, mapDispatchToProps) (BottomBar);
 
 const styles = StyleSheet.create({
     main: {
