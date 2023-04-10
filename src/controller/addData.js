@@ -1,6 +1,7 @@
 import { collection, addDoc } from 'firebase/firestore/lite';
 import { db } from '../model/config';
 
+// that function will add new task to the database
 const AddTask = async (title, description, starred) => {
     try {
         const newTask = {

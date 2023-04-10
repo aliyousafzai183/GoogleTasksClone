@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-// Icon
+// vector Icons
 import FrontAwesome from 'react-native-vector-icons/FontAwesome';
 
+// will show when all tasks are completed
 const Completed = () => {
     return (
         <View style={styles.main}>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
+// top nav bar that`s displayed on top
 const NavBar = () => {
     return (
         <View style={styles.main}>

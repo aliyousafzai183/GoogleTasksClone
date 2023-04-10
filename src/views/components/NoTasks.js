@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
+// Will be displayed when there are no tasks in the database
 const NoTasks = () => {
     return (
         <View style={styles.main}>

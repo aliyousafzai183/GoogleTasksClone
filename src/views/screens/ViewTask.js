@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button} from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 
 // icons
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+// That screen will be used to provide details of 
+// each users and user can update title, descriptio, starred and completed, due date
 const ViewTask = () => {
     return (
         <View style={styles.main}>

@@ -25,6 +25,7 @@ const Todos = ({ toggleModalVisible }) => {
         textInputRef.current?.focus();
     }, []);
 
+    // when save button will be pressed
     const handleSave = async () => {
         if (title.length < 3) {
             return;
@@ -46,6 +47,7 @@ const Todos = ({ toggleModalVisible }) => {
                 onChangeText={(txt) => { setTitle(txt) }}
             />
 
+            {/* description input will be shown if the user click button */}
             {
                 showDescription
                     ?

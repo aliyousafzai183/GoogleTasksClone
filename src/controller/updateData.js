@@ -1,23 +1,22 @@
-import { doc, updateDoc, collection, query, where, getDocs } from 'firebase/firestore/lite';
+// in page2.js
+import { doc, updateDoc, getDoc } from 'firebase/firestore/lite';
 import { db } from '../model/config';
 
-const updateTask = async (title, updates) => {
-    try {
-        const tasksRef = collection(db, 'Tasks');
-        const q = query(tasksRef, where('title', '==', title));
-        const querySnapshot = await getDocs(q);
+const updateTask = async (taskId, updates) => {
+  try {
+    const taskRef = doc(db, 'Tasks', taskId);
+    const taskDoc = await getDoc(taskRef);
 
-        if (querySnapshot.size === 1) {
-            const taskDoc = querySnapshot.docs[0];
-            await updateDoc(doc(db, 'Tasks', taskDoc.id), updates);
-            console.log(`Task with title ${title} has been updated.`);
-        } else {
-            console.log(`Unable to update task with title ${title}.`);
-        }
-    } catch (error) {
-        console.log(error);
+    if (taskDoc.exists()) {
+      console.log('Current task data:', taskDoc.data());
+      await updateDoc(taskRef, updates);
+      console.log(`Task with ID ${taskId} has been updated with:`, updates);
+    } else {
+      console.log(`Unable to find task with ID ${taskId}.`);
     }
+  } catch (error) {
+    console.log('Error updating task:', error);
+  }
 };
-
 
 export default updateTask;

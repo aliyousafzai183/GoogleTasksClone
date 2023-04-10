@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
+// will be displayed when there are no starred tasks
 const NoStarredTasks = () => {
     return (
         <View style={styles.main}>

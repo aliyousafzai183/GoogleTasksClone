@@ -6,23 +6,27 @@ import { useState } from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
-// updateTask
+// updateTask in db
 import updateTask from '../../controller/updateData';
 
-export default Todos = ({ title, description, starred, completed, date, navigation }) => {
+// that component will be rendered to display every todo
+export default Todos = ({ id,  title, description, starred, completed, date, navigation }) => {
     const [star, setStar] = useState(starred);
     const [complete, setComplete] = useState(completed);
 
+    // when any task is toggled complete
     const handleComplete = () => {
         setComplete(!complete);
-        updateTask(title, { completed: !complete });
+        updateTask(id, { completed: !complete });
     };
     
+    // when any task is toggled starred
     const handleStar = () => {
         setStar(!star);
-        updateTask(title, { starred: !star });
+        updateTask(id, { starred: !star });
     };
 
+    // when any task is clicked to view details of task
     handleViewTask = () => {
         navigation.navigate('ViewTask');
     }

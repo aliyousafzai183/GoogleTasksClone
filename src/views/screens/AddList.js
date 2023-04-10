@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Button} from 'react-native';
 // icons
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+// That screen will be returned when user clicks on add new list
 const AddList = () => {
     return (
         <View style={styles.main}>

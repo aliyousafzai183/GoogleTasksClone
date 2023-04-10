@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 // components
 import Todos from '../components/Todos';
 import NoStarredTasks from '../components/NoStarredTasks';
-import DraggableFlatList from 'react-native-draggable-flatlist';
 
 // data
 import data from '../../controller/data';
@@ -15,21 +14,18 @@ const MyTask = ({navigation}) => {
 
     useEffect(() => {
         async function fetchData() {
-            const tasksData = await data();
-
-            // Filter the tasksData array to only include items that are starred and not completed
-            const filteredTasks = tasksData.filter((task) => task.starred && !task.completed);
-
-            setTasks(filteredTasks);
+          const tasksData = await data();
+      
+          // Filter the tasksData array to only include items that are starred and not completed
+          const filteredTasks = tasksData.filter((task) => task.starred && !task.completed);
+      
+          setTasks(filteredTasks);
         }
-
+      
         fetchData();
-    }, []);
+      }, []);
 
-    const handleTaskView = () => {
-        navigation.navigate('ViewTask');
-    }
-
+    //   when there are no starred tasks
     if (!tasks || tasks.length === 0) {
         return (
             <View style={styles.container}>
@@ -37,34 +33,22 @@ const MyTask = ({navigation}) => {
             </View>
         )
     }
-
+    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Recently Starred</Text>
-            <DraggableFlatList
+            <FlatList
                 data={tasks}
-                renderItem={({ item, drag, isActive }) => (
-                    <TouchableOpacity
-                        onPress={handleTaskView}
-                        onLongPress={drag}
-                        style={[
-                            styles.todoItem,
-                            isActive ? styles.activeItem : null
-                        ]}
-                    >
-                        <Todos
-                            title={item.title}
-                            description={item.description}
-                            starred={item.starred}
-                            completed={item.completed}
-                            date={item.date?.toDate().toString().slice(0, 10)}
-                        />
-                    </TouchableOpacity>
-                )}
-                keyExtractor={(item, index) => `draggable-item-${item.id}`}
-                onDragEnd={({ data }) => setTasks(data)}
+                renderItem={({ item }) => <Todos
+                    id={item.id}
+                    title={item.title}
+                    description={item.description}
+                    starred={item.starred}
+                    completed={item.completed}
+                    date={item.date?.toDate().toString().slice(0,10)}
+                    navigation={navigation}
+                />}
             />
-
         </View>
     )
 }
@@ -72,8 +56,8 @@ const MyTask = ({navigation}) => {
 export default MyTask;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    container:{
+        flex:1,
         backgroundColor: '#1F1F1F',
         paddingHorizontal: 20,
         paddingVertical: 10

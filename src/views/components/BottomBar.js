@@ -13,18 +13,19 @@ import AddTaskModal from './AddTaskModal';
 import { connect } from 'react-redux';
 
 const BottomBar = ({modalVisible, toggleModalVisible}) => {
-    // const [modalVisible, setModalVisible] = useState(false);
 
+    // when modalsave button of modal is pressed
     const handlePress = () => {
-        // setModalVisible(true);
         toggleModalVisible();
     };
 
+    // when modal is closed by user
     const handleClose = () => {
-        // setModalVisible(false);
         toggleModalVisible();
     }
 
+    //  if modal is not visible then display bottom bar
+    // but if modal is visible then do not render the bottom bar
     if (!modalVisible) {
         return (
             <View style={styles.main}>

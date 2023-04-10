@@ -6,6 +6,7 @@ import BottomBar from '../components/BottomBar';
 import NavBar from '../components/NavBar';
 import Task from './Task';
 
+// that view provides a navbar, swiping task screens, and bottom bar
 const MainView = () => {
     return (
         <KeyboardAvoidingView style={styles.main}>

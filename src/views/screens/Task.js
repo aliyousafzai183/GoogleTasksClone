@@ -11,6 +11,7 @@ import AddList from './AddList';
 
 const Tab = createMaterialTopTabNavigator();
 
+// That screen is used for making swipeable screens
 const Task = () => {
 
     return (
@@ -38,6 +39,7 @@ const Task = () => {
                 name="+ New list"
                 component={AddList}
                 listeners={({ navigation }) => ({
+                    // when user presses on that screen
                     tabPress: (e) => {
                         e.preventDefault();
                         navigation.navigate('AddList');
