@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { useState } from 'react';
 
 // vector icons
@@ -9,6 +9,9 @@ import Feather from 'react-native-vector-icons/Feather';
 // updateTask in db
 import updateTask from '../../controller/updateData';
 import { connect } from 'react-redux';
+
+// style
+import styles from '../styles/componentStyles/TodoStyle';
 
 // that component will be rendered to display every todo
 const Todos = ({ id,  title, description, starred, completed, date, navigation, toggleFetchData }) => {
@@ -84,53 +87,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(Todos);
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        marginVertical: 10,
-        marginHorizontal: 5
-    },
-
-    main: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-
-    textContainer: {
-        flex: 1,
-        marginHorizontal: 10,
-    },
-
-    title: {
-        color: '#C5C7C6',
-        fontSize: 15,
-        // fontWeight: 'bold',
-    },
-
-    description: {
-        color: '#C5C7C6',
-        fontSize: 12,
-    },
-
-    completedButton: {
-        marginHorizontal: 10,
-    },
-
-    dateContainer: {
-        borderWidth: 1,
-        borderColor: '#C5C7C6',
-        alignSelf: 'flex-start',
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        borderRadius: 10,
-        marginTop: 10,
-        marginLeft: '15%'
-    },
-
-    date: {
-        color: '#C5C7C6',
-        fontSize: 14,
-    },
-});

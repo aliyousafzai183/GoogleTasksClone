@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+
+// styles
+import styles from '../styles/componentStyles/NavBarStyle';
 
 // top nav bar that`s displayed on top
 const NavBar = () => {
@@ -18,26 +21,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-const styles = StyleSheet.create({
-    main: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#1F1F1F',
-        height: '10%',
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        top: 0
-    },
-
-    title: {
-        color: '#C5C7C6',
-        fontSize: 25
-    },
-
-    Image: {
-        height: 40,
-        width: 40,
-        borderRadius: 50
-    }
-})

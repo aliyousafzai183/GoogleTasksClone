@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Button} from 'react-native';
+import { View, Text} from 'react-native';
 
 // icons
 import AntDesign from 'react-native-vector-icons/AntDesign';
+
+// style
+import styles from '../styles/screenStyles/AddListStyle';
 
 // That screen will be returned when user clicks on add new list
 const AddList = () => {
@@ -15,18 +18,3 @@ const AddList = () => {
 }
 
 export default AddList;
-
-const styles = StyleSheet.create({
-    main:{
-        flex:1,
-        backgroundColor:'#1F1F1F',
-        paddingHorizontal:20,
-        alignItems:'center',
-        justifyContent:'center'
-    },
-
-    txt:{
-        color:'#C7C5C6',
-        fontSize:15
-    }
-})

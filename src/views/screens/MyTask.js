@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useState, useEffect } from 'react';
 
 // components
@@ -15,6 +15,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 // redux
 import { connect } from 'react-redux';
+
+// style
+import styles from '../styles/screenStyles/MyTaskStyle';
 
 // To display All Tasks
 const MyTask = ({ navigation, fetchData }) => {
@@ -115,23 +118,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(MyTask);
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#1F1F1F',
-        paddingHorizontal: 20,
-    },
-    completedButton: {
-        paddingVertical: 10,
-        marginVertical: 20,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingLeft: 15,
-        paddingRight: 5
-    },
-    completedButtonText: {
-        color: '#C5C7C6',
-        fontSize: 18
-    }
-})

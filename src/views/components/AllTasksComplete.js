@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 
 // vector Icons
 import FrontAwesome from 'react-native-vector-icons/FontAwesome';
+
+// styles
+import styles from '../styles/componentStyles/AllTasksCompleteStyles';
 
 // will show when all tasks are completed
 const Completed = () => {
@@ -18,32 +21,3 @@ const Completed = () => {
 }
 
 export default Completed;
-
-const styles = StyleSheet.create({
-    main: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent:'center',
-        padding:75,
-        backgroundColor:'black',
-        height:'100%',
-    },
-
-    title: {
-        color: '#C5C7C6',
-        fontSize: 23,
-        textAlign:'center',
-        marginTop:'5%'
-    },
-
-    subTitle:{
-        color: '#C5C7C6',
-        fontSize: 17,
-        textAlign:'center',
-        marginTop:'2%'
-    },
-
-    iconContainer: {
-        marginVertical:'5%'
-    }
-})

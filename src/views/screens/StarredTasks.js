@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { useState, useEffect } from 'react';
 
 // components
@@ -11,6 +11,9 @@ import data from '../../controller/data';
 
 // redux
 import { connect } from 'react-redux';
+
+// style
+import styles from '../styles/screenStyles/StarredTaskStyle';
 
 const StarredTasks = ({navigation, fetchData}) => {
     const [tasks, setTasks] = useState([]);
@@ -61,17 +64,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(StarredTasks);
-
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor: '#1F1F1F',
-        paddingHorizontal: 20,
-        paddingVertical: 10
-    },
-
-    title: {
-        color: '#C5C7C6',
-        fontSize: 18,
-    }
-})

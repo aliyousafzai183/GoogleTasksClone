@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StyleSheet} from 'react-native';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
@@ -7,6 +6,9 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import StarredTasks from './StarredTasks';
 import MyTask from './MyTask';
 import AddList from './AddList';
+
+// style
+import styles from '../styles/screenStyles/TaskSyle';
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -52,10 +54,3 @@ const Task = () => {
 }
 
 export default Task;
-
-const styles = StyleSheet.create({
-    main: {
-        paddingHorizontal: 20,
-        height: '71%',
-    }
-})

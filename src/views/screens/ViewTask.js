@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text} from 'react-native';
 
 // icons
 import AntDesign from 'react-native-vector-icons/AntDesign';
+
+// style
+import styles from '../styles/screenStyles/ViewTaskStyle';
 
 // That screen will be used to provide details of 
 // each users and user can update title, descriptio, starred and completed, due date
@@ -16,18 +19,3 @@ const ViewTask = () => {
 }
 
 export default ViewTask;
-
-const styles = StyleSheet.create({
-    main:{
-        flex:1,
-        backgroundColor:'#1F1F1F',
-        paddingHorizontal:20,
-        alignItems:'center',
-        justifyContent:'center'
-    },
-
-    txt:{
-        color:'#C7C5C6',
-        fontSize:15
-    }
-})

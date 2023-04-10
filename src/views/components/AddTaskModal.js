@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, TextInput, Keyboard } from 'react-native';
+import { View, TouchableOpacity, Text, TextInput } from 'react-native';
 import { useState, useEffect, useRef } from 'react';
 
 // vector icons
@@ -11,6 +11,9 @@ import { connect } from 'react-redux';
 
 // addData
 import AddTask from '../../controller/addData';
+
+// styles
+import styles from '../styles/componentStyles/AddTaskModalStyle';
 
 const Todos = ({ toggleModalVisible, toggleFetchData }) => {
     const [showDescription, setShowDescription] = useState(false);
@@ -106,44 +109,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(Todos);
-
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        height: '100%'
-    },
-
-    title: {
-        color: '#C7C5C6',
-        fontSize: 18
-    },
-
-    description: {
-        color: '#C7C5C6',
-        fontSize: 15
-    },
-
-    subContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-
-    buttonContainer: {
-        flexDirection: 'row',
-    },
-
-    saveButton: {
-        color: '#AAC7F8',
-        fontSize: 18,
-    },
-
-    otherButtons: {
-        marginRight: '10%'
-    },
-
-    saveButtonContainer: {
-        padding: 10
-    }
-});
